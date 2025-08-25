@@ -1,0 +1,51 @@
+Query Processing Flow
+
+User Input → Query Validation → Exa API Call → Content Extraction → Context Formation → LLM Processing → Response Generation
+
+
+Exa.ai Internal Workflow
+
+User Query → Neural Embedding → Vector Similarity Search → Web Content Retrieval → 
+Content Cleaning → Highlight Extraction → Structured JSON Response
+
+
+┌─────────────┐    HTTP/JSON    ┌─────────────┐
+│   User      │ ──────────────→ │   Exa.ai    │
+│  (Query)    │                 │   Server    │
+└─────────────┘                 └─────────────┘
+       │                              │
+       │                              ▼
+       │                      ┌─────────────┐
+       │                      │ Web Content │
+       │                      │  Index      │
+       │                      └─────────────┘
+       │                              │
+       │                              ▼
+       │                      ┌─────────────┐
+       │                      │  Cleaned    │
+       │                      │  Content    │
+       │                      └─────────────┘
+       │                              │
+       ▼                              ▼
+┌─────────────┐                 ┌─────────────┐
+│   Gemini    │ ←───────────────│   Context   │
+│    LLM      │                 │  Formatter  │
+└─────────────┘                 └─────────────┘
+       │
+       ▼
+┌─────────────┐
+│   Final     │
+│  Response   │
+└─────────────┘
+
+
+
+# Planned features
+enhancements = [
+    "Vector database integration for local caching",
+    "Multi-query generation for complex questions",
+    "Automatic query refinement based on results",
+    "Real-time web search for breaking news",
+    "Multi-modal support (images + text)",
+    "User feedback loop for quality improvement"
+]
